@@ -20,6 +20,6 @@
         /// </summary>
         public string? Senha { get; set; }
 
-        public EndereçoDto? Endereco { get; set; }
+        public EnderecoDto? Endereco { get; set; }
     }
 }

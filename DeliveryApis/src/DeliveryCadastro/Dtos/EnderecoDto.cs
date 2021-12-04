@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public class EndereçoDto
+    public class EnderecoDto
     {
         /// <summary>
         /// 

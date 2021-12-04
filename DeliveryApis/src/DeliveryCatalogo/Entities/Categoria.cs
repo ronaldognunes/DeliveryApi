@@ -6,8 +6,7 @@
         {
             Id = id;
             Descricao = descricao;
-            NomeCategoria = nomeCategoria;
-   
+            NomeCategoria = nomeCategoria;   
         }
         public Guid Id { get; private set; }
         public string NomeCategoria { get; private set; }
