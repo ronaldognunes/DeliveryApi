@@ -1,4 +1,6 @@
-﻿using DeliveryCadastro.Dtos;
+﻿using DeliveryCadastro.CadastroServices;
+using DeliveryCadastro.Dtos;
+using DeliveryCadastro.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryCadastro.Controllers
@@ -7,22 +9,31 @@ namespace DeliveryCadastro.Controllers
     [Route("[controller]")]
     public class CadastroController : ControllerBase
     {
-        private readonly ILogger<CadastroController> _logger;   
-        public CadastroController(ILogger<CadastroController> logger)
+        private readonly ILogger<CadastroController> _logger;
+        private readonly IUsuarioService _usuarioService;
+        public CadastroController(ILogger<CadastroController> logger
+                                , IUsuarioService usuarioService)
         {
-            _logger = logger;   
+            _logger = logger;
+            _usuarioService = usuarioService; 
         }
 
         [HttpGet("usuarios")]
-        public async Task<ActionResult<IList<UsuarioDto>>> RetornarUsuarios()
+        public async Task<ActionResult<IEnumerable<Usuario>>> RetornarUsuarios()
         {
-            return Ok();
+            var usuarios = await _usuarioService.RetornartodosUsuarios();
+            
+            return Ok(usuarios);
         }
 
         [HttpPost("Cadastrar-usuario")]
-        public async Task<IActionResult> CadastrarUsuario([FromBody] UsuarioDto usuario)
+        public async Task<IActionResult> CadastrarUsuario([FromBody] Usuario usuario)
         {
-            return Ok();
+            var sucesso = await _usuarioService.CadastrarUsuario(usuario);
+            if(sucesso)
+                return Ok();
+
+            return BadRequest();
         }
 
         [HttpPut("alterar-endereco-usuario/{id:int}")]
@@ -34,6 +45,9 @@ namespace DeliveryCadastro.Controllers
         [HttpDelete("excluir-usuario/{id:int}")]
         public async Task<IActionResult> ExcluirUsuario(int id)
         {
+            var sucesso = await _usuarioService.DeletarUsuario(id);
+            if (sucesso)
+                return Ok();
             return NoContent();
         }
 
