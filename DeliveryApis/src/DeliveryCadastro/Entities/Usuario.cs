@@ -1,18 +1,17 @@
-﻿namespace DeliveryCadastro.Entities
-{
-    public class Usuario
-    {
+﻿using BuildingBlocks;
 
-        public int? Id { get;  private set ; }
+namespace DeliveryCadastro.Entities
+{
+    public class Usuario:Entity
+    {
         public string Nome { get; private set; }
         public string Email { get; private set; }
         public string Telefone { get; private set; }
         public string Senha { get; private set; }
         public Endereco? Endereco { get; private set; }
 
-        public Usuario(int? id, string nome, string email, string telefone, string senha)
+        public Usuario( string nome, string email, string telefone, string senha)
         {
-            Id = id;
             Nome = nome;
             Email = email;
             Telefone = telefone;

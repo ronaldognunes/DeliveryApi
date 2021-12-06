@@ -5,10 +5,13 @@ namespace DeliveryCadastro.Context
 {
     public class CadastroDbContext:DbContext
     {
-        public CadastroDbContext( DbContextOptions options) :base(options)
+        public DbSet<Usuario>? Usuarios { get; set; }
+        public DbSet<Endereco>? Enderecos { get; set; }
+        public CadastroDbContext( DbContextOptions<CadastroDbContext> options) :base(options) {}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            DbSet<Usuario> Usuarios;
-            DbSet<Endereco> Enderecos;
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
