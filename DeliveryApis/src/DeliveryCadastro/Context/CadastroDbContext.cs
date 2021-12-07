@@ -8,7 +8,6 @@ namespace DeliveryCadastro.Context
     public class CadastroDbContext:DbContext,IUnitOfWork
     {
         public DbSet<Usuario>? Usuarios { get; set; }
-        public DbSet<Endereco>? Enderecos { get; set; }
         public CadastroDbContext( DbContextOptions<CadastroDbContext> options) :base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

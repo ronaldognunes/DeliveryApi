@@ -39,7 +39,7 @@ namespace DeliveryCadastro.Mapping
 
             builder.OwnsOne(x => x.Endereco, xm =>
              {
-                 xm.ToTable("ENDERECO_USUARIO");
+                 //xm.ToTable("ENDERECO_USUARIO");
 
                  xm.Property(x => x.Uf)
                  .HasColumnName("UF")

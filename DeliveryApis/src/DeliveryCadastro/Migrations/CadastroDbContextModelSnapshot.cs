@@ -93,7 +93,7 @@ namespace DeliveryCadastro.Migrations
 
                             b1.HasKey("UsuarioId");
 
-                            b1.ToTable("ENDERECO_USUARIO", (string)null);
+                            b1.ToTable("USUARIOS");
 
                             b1.WithOwner()
                                 .HasForeignKey("UsuarioId");

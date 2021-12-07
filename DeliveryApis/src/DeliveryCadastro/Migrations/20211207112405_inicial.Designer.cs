@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DeliveryCadastro.Migrations
 {
     [DbContext(typeof(CadastroDbContext))]
-    [Migration("20211206185320_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211207112405_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,7 +95,7 @@ namespace DeliveryCadastro.Migrations
 
                             b1.HasKey("UsuarioId");
 
-                            b1.ToTable("ENDERECO_USUARIO", (string)null);
+                            b1.ToTable("USUARIOS");
 
                             b1.WithOwner()
                                 .HasForeignKey("UsuarioId");

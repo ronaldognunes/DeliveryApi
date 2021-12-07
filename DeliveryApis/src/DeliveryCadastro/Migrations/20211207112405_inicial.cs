@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DeliveryCadastro.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,18 +18,7 @@ namespace DeliveryCadastro.Migrations
                     NOME = table.Column<string>(type: "varchar(100)", nullable: false),
                     EMAIL = table.Column<string>(type: "varchar(30)", nullable: false),
                     TELEFONE = table.Column<string>(type: "varchar(15)", nullable: false),
-                    SENHA = table.Column<string>(type: "varchar(15)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_USUARIOS", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ENDERECO_USUARIO",
-                columns: table => new
-                {
-                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    SENHA = table.Column<string>(type: "varchar(15)", nullable: false),
                     RUA = table.Column<string>(type: "varchar(150)", nullable: true),
                     NUMERO = table.Column<int>(type: "int", nullable: true),
                     MUNICIPIO = table.Column<string>(type: "varchar(100)", nullable: true),
@@ -40,21 +29,12 @@ namespace DeliveryCadastro.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ENDERECO_USUARIO", x => x.UsuarioId);
-                    table.ForeignKey(
-                        name: "FK_ENDERECO_USUARIO_USUARIOS_UsuarioId",
-                        column: x => x.UsuarioId,
-                        principalTable: "USUARIOS",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_USUARIOS", x => x.ID);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ENDERECO_USUARIO");
-
             migrationBuilder.DropTable(
                 name: "USUARIOS");
         }
